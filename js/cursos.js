@@ -2,13 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Solo ejecuta este script si estamos en la página de cursos
     if (!document.getElementById('learn')) return;
     
+    // MODIFICACIÓN 1: El array ahora contiene las URLs completas
     const videoData = [
-        { topic: 'The Alphabet', icon: 'sort_by_alpha', videoFile: 'grammar.mp4', level: 'beginner', description: 'Aprende la pronunciación correcta de cada letra del abecedario.' },
-        { topic: 'Basic Greetings', icon: 'waving_hand', videoFile: 'greetings.mp4', level: 'beginner', description: 'Domina los saludos y despedidas más comunes para tus primeras conversaciones.' },
-        { topic: 'Past Simple', icon: 'history', videoFile: 'pass.mp4', level: 'intermediate', description: 'Un video claro y conciso para dominar el Pasado Simple.' },
-        { topic: 'Travel Vocabulary', icon: 'flight_takeoff', videoFile: 'vocabulary.mp4', level: 'intermediate', description: 'Vocabulario esencial que necesitarás en tu próximo viaje.' },
-        { topic: 'Conditionals', icon: 'rule', videoFile: 'conditionals.mp4', level: 'advanced', description: 'Explora los diferentes tipos de condicionales para expresar ideas complejas.' },
-        { topic: 'Business Idioms', icon: 'business_center', videoFile: 'idioms.mp4', level: 'advanced', description: 'Aprende expresiones idiomáticas comunes en el entorno de negocios.' }
+        { topic: 'The Alphabet', icon: 'sort_by_alpha', videoFile: 'https://github.com/cardenaswalker2/Ingles/raw/main/videos/grammar.mp4', level: 'beginner', description: 'Aprende la pronunciación correcta de cada letra del abecedario.' },
+        { topic: 'Basic Greetings', icon: 'waving_hand', videoFile: 'https://github.com/cardenaswalker2/Ingles/raw/main/videos/greetings.mp4', level: 'beginner', description: 'Domina los saludos y despedidas más comunes para tus primeras conversaciones.' },
+        { topic: 'Past Simple', icon: 'history', videoFile: 'https://github.com/cardenaswalker2/Ingles/raw/main/videos/pass.mp4', level: 'intermediate', description: 'Un video claro y conciso para dominar el Pasado Simple.' },
+        { topic: 'Travel Vocabulary', icon: 'flight_takeoff', videoFile: 'https://github.com/cardenaswalker2/Ingles/raw/main/videos/vocabulary.mp4', level: 'intermediate', description: 'Vocabulario esencial que necesitarás en tu próximo viaje.' },
+        { topic: 'Conditionals', icon: 'rule', videoFile: 'https://github.com/cardenaswalker2/Ingles/raw/main/videos/conditionals.mp4', level: 'advanced', description: 'Explora los diferentes tipos de condicionales para expresar ideas complejas.' },
+        { topic: 'Business Idioms', icon: 'business_center', videoFile: 'https://github.com/cardenaswalker2/Ingles/raw/main/videos/idioms.mp4', level: 'advanced', description: 'Aprende expresiones idiomáticas comunes en el entorno de negocios.' }
     ];
 
     let currentLevel = 'all';
@@ -47,7 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.videoTitle.textContent = video.topic;
         elements.videoDescription.textContent = video.description;
         elements.videoLoader.style.display = 'block';
-        elements.videoSource.src = `videos/${video.videoFile}`;
+        
+        // MODIFICACIÓN 2: Asigna directamente la URL completa
+        elements.videoSource.src = video.videoFile;
+        
         elements.videoPlayer.load();
         elements.videoPlayer.play();
         elements.videoDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
